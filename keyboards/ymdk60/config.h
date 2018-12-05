@@ -1,5 +1,5 @@
 /*
-Copyright 2012 Jun Wako <wakojun@gmail.com>
+Copyright 2018
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -26,7 +26,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define DEVICE_VER      0x0001
 #define MANUFACTURER    
 #define PRODUCT         YMDK60
-#define DESCRIPTION     YMDK60 Keyboard PCB by 
+#define DESCRIPTION     YMDK60 Keyboard PCB by Shenzhen YMD Tech
 
 /* key matrix size */
 #define MATRIX_ROWS 5
@@ -79,6 +79,6 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define PREVENT_STUCK_MODIFIERS
 
 /* sets delay between tapping and holding */
-#define TAPPING_TERM 150
+#define TAPPING_TERM 200
 
 #endif
