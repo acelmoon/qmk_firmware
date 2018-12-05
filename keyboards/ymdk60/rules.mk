@@ -52,7 +52,7 @@ OPT_DEFS += -DBOOTLOADER_SIZE=4096
 
 # Build Options
 BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE = yes	# Mouse keys(+4700)
+MOUSEKEY_ENABLE = no	# Mouse keys(+4700)
 EXTRAKEY_ENABLE = yes	# Audio control and System control(+450)
 CONSOLE_ENABLE = no		# Console for debug(+400)
 COMMAND_ENABLE = no     # Commands for debug and configuration
@@ -61,8 +61,5 @@ NKRO_ENABLE = yes		# USB Nkey Rollover - if this doesn't work, see here: https:/
 BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality (+1150)
 RGBLIGHT_ENABLE = yes   # Enable WS2812 RGB keyboard underlight functionality (+4870) Do not enable this with audio at the same time.
 AUDIO_ENABLE = no       # Audio output on port C6
-
-#not sure if option is possible
-MIDI_ENABLE      = no  # MIDI controls
-UNICODE_ENABLE   = no  # Unicode
-BLUETOOTH_ENABLE = no  # Enable Bluetooth with the Adafruit EZ-Key HID
+MIDI_ENABLE = no  		# MIDI controls
+UNICODE_ENABLE = no  	# Unicode
