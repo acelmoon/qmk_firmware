@@ -1,0 +1,2 @@
+/* key matrix pins */
+#define UNUSED_PINS {B2, B4, B5, C0, C1, C2, C3, C4, C5, C6, D4, D6, D7, E0, E1, E3, E4, E5, E6, E7, F2, F3}
