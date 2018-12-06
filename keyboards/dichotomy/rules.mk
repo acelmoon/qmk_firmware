@@ -1,9 +1,15 @@
-# MCU name
-#MCU = at90usb1286
-MCU = atmega32u4
 
-# project specific files
-#SRC =
+OPT_DEFS += -DDICHOTOMY_PROMICRO
+DICHOTOMY_UPLOAD_COMMAND = while [ ! -r $(USB) ]; do sleep 1; done; \
+                         avrdude -p $(MCU) -c avr109 -U flash:w:$(TARGET).hex -P $(USB)
+
+# # project specific files
+SRC = matrix.c
+
+
+# MCU name
+#MCU = at90usb1287
+MCU = atmega32u4
 
 # Processor frequency.
 #     This will define a symbol, F_CPU, in all source code files equal to the
@@ -38,39 +44,34 @@ ARCH = AVR8
 #     CPU clock adjust registers or the clock division fuses), this will be equal to F_CPU.
 F_USB = $(F_CPU)
 
+# Bootloader
+ #     This definition is optional, and if your keyboard supports multiple bootloaders of
+ #     different sizes, comment this out, and the correct address will be loaded
+ #     automatically (+60). See bootloader.mk for all options.
+ BOOTLOADER = caterina
+
 # Interrupt driven control endpoint task(+60)
 OPT_DEFS += -DINTERRUPT_CONTROL_ENDPOINT
 
-# Boot Section
-BOOTLOADER = qmk-dfu
-
-# Do not put the microcontroller into power saving mode
-# when we get USB suspend event. We want it to keep updating
-# backlight effects.
-OPT_DEFS += -DNO_SUSPEND_POWER_DOWN
-
 # Build Options
-#   change yes to no to disable
+#   comment out to disable the options.
 #
-BOOTMAGIC_ENABLE = no       # Virtual DIP switch configuration(+1000)
-MOUSEKEY_ENABLE = no        # Mouse keys(+4700)
-EXTRAKEY_ENABLE = yes       # Audio control and System control(+450)
-CONSOLE_ENABLE = no         # Console for debug(+400)
-COMMAND_ENABLE = no         # Commands for debug and configuration
+#BOOTMAGIC_ENABLE = yes	# Virtual DIP switch configuration(+1000)
+#MOUSEKEY_ENABLE = yes	# Mouse keys(+4700)
+POINTING_DEVICE_ENABLE = yes # Generic Pointer, not as big as mouse keys hopefully.
+EXTRAKEY_ENABLE = yes	# Audio control and System control(+450)
+CONSOLE_ENABLE = yes	# Console for debug(+400)
+COMMAND_ENABLE = yes   # Commands for debug and configuration
+CUSTOM_MATRIX = yes    # Remote matrix from the wireless bridge
 # Do not enable SLEEP_LED_ENABLE. it uses the same timer as BACKLIGHT_ENABLE
-SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
-# if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
-NKRO_ENABLE = yes           # USB Nkey Rollover
-BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality on B7 by default
-MIDI_ENABLE = no            # MIDI support (+2400 to 4200, depending on config)
-UNICODE_ENABLE = no         # Unicode
-BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
-AUDIO_ENABLE = no           # Audio output on port C6
-FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
-RGB_MATRIX_ENABLE = yes     # Use RGB matrix
+# SLEEP_LED_ENABLE = yes  # Breathing sleep LED during USB suspend
+NKRO_ENABLE = yes		# USB Nkey Rollover - not yet supported in LUFA
+# BACKLIGHT_ENABLE = yes  # Enable keyboard backlight functionality
+# MIDI_ENABLE = YES 		# MIDI controls
+UNICODE_ENABLE = YES 		# Unicode
+# BLUETOOTH_ENABLE = yes # Enable Bluetooth with the Adafruit EZ-Key HID
 
-LAYOUTS = 60_ansi 60_iso
+USB = /dev/ttyACM0
 
-# Experimental features for zealcmd please do no enable
-#RAW_ENABLE = yes
-#USE_KEYMAPS_IN_EEPROM = yes
+#upload: build
+#	$(DICHOTOMY_UPLOAD_COMMAND)
