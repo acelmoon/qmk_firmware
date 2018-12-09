@@ -59,7 +59,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
       _______, _______, _______, _______, _______, _______, _______, _______, KC_UP,   KC_LBRC, KC_RBRC, KC_BSLS, _______,          _______,
       _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, KC_NO,            _______,
-      _______, KC_NO,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+      _______, KC_NO,   _______, _______, _______, _______, _______, F(1),    _______, _______, _______, _______, _______, _______, _______,
       _______, _______, _______, _______,                _______,                      _______, _______, _______, _______, _______, _______),
 	  
   //4: Lighting
@@ -107,10 +107,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 enum function_id {
 	RGB_CYAN,
+	APO_M,
 };
 
 const uint16_t PROGMEM fn_actions[] = {
   [0]  = ACTION_FUNCTION(RGB_CYAN),
+  [1]  = ACTION_FUNCTION(APO_M),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -118,5 +120,17 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
 	case RGB_CYAN:
 	  rgblight_setrgb(0, 55, 40);
 	  break;
+  }
+  switch(id){
+	case APO_M:
+	  if(record->event.pressed){
+	    add_key(KC_QUOT);
+        add_key(KC_M);
+        send_keyboard_report();
+	  }else{
+		del_key(KC_QUOT);
+        del_key(KC_M);
+        send_keyboard_report();
+	  }
   }
 }
