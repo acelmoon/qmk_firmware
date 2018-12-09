@@ -78,7 +78,4 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 /* prevent stuck modifiers */
 #define PREVENT_STUCK_MODIFIERS
 
-/* sets delay between tapping and holding */
-#define TAPPING_TERM 200
-
 #endif
