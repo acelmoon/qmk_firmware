@@ -19,13 +19,5 @@ void led_set_kb(uint8_t usb_led) {
 	    caps_led_off();
   }
 
-   if (usb_led & (1<<USB_LED_NUM_LOCK)) {
-	 } else {
-   }
-
-   if (usb_led & (1<<USB_LED_SCROLL_LOCK)) {
-	 } else {
-   }
-
 	led_set_user(usb_led);
 }
