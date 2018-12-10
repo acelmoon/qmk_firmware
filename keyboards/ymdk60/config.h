@@ -15,16 +15,16 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONFIG_H
+#pragma once
 #define CONFIG_H
 
 #include "config_common.h"
 
 /* USB Device descriptor parameter */
-#define VENDOR_ID       0
-#define PRODUCT_ID      0
+#define VENDOR_ID       0xFEED
+#define PRODUCT_ID      0xYM60
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    
+#define MANUFACTURER    Shenzhen YMD Tech Co., LTD
 #define PRODUCT         YMDK60
 #define DESCRIPTION     YMDK60 Keyboard PCB by Shenzhen YMD Tech
 
@@ -74,8 +74,3 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define IS_COMMAND() ( \
   keyboard_report->mods == (MOD_BIT(KC_LSHIFT) | MOD_BIT(KC_RSHIFT)) \
 )
-
-/* prevent stuck modifiers */
-#define PREVENT_STUCK_MODIFIERS
-
-#endif
