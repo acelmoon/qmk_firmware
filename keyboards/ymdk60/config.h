@@ -22,9 +22,9 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 /* USB Device descriptor parameter */
 #define VENDOR_ID       0xFEED
-#define PRODUCT_ID      0xYM60
+#define PRODUCT_ID      0x7360
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    Shenzhen YMD Tech Co., LTD
+#define MANUFACTURER    Shenzhen YMD Tech Co. LTD
 #define PRODUCT         YMDK60
 #define DESCRIPTION     YMDK60 Keyboard PCB by Shenzhen YMD Tech
 
