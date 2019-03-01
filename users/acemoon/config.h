@@ -15,7 +15,8 @@ You should have received a copy of the GNU General Public License
 along with this program. If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef CONFIG_USER_H
+
+#pragma once
 #define CONFIG_USER_H
 
 #include "config_common.h"
@@ -33,10 +34,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 //#define DISABLE_LEADER
 
 /* Debounce reduces chatter (unintended double-presses) - Set 0 if debouncing isn't needed */
-#define DEBOUNCING_DELAY 5
-
-/* prevent stuck modifiers */
-#define PREVENT_STUCK_MODIFIERS
+#define DEBOUNCING_DELAY 0
 
 /* sets delay between tapping and holding */
 #ifdef TAPPING_TERM
@@ -72,5 +70,3 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define MOUSEKEY_TIME_TO_MAX       1	//How long you want to hold down a movement key until MOUSEKEY_MAX_SPEED is reached. This controls how quickly your cursor will accelerate.
 #define MOUSEKEY_WHEEL_MAX_SPEED   4	//The top speed for scrolling movements.
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 1	//How long you want to hold down a scroll key until MOUSEKEY_WHEEL_MAX_SPEED is reached. This controls how quickly your scrolling will accelerate.1
-
-#endif

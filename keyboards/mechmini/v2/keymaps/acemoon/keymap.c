@@ -95,45 +95,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	
 };
 
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-	switch (id) {
-	}
-	return MACRO_NONE;
-}
-
-void matrix_init_user(void) {
-}
-
-void matrix_scan_user(void) {
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-	return true;
-}
-
-void led_set_user(uint8_t usb_led) {
-	if (usb_led & (1 << USB_LED_NUM_LOCK)) {
-	} else {
-	}
-
-	if (usb_led & (1 << USB_LED_CAPS_LOCK)) {
-	} else {
-	}
-
-	if (usb_led & (1 << USB_LED_SCROLL_LOCK)) {
-	} else {
-	}
-
-	if (usb_led & (1 << USB_LED_COMPOSE)) {
-	} else {
-	}
-
-	if (usb_led & (1 << USB_LED_KANA)) {
-	} else {
-	}
-}
-
-#define rgblight_set_led0        rgblight_setrgb_at(0, 55, 40, 10);rgblight_setrgb_at(0, 55, 40, 9);rgblight_setrgb_at(0, 55, 40, 8);rgblight_setrgb_at(0, 55, 40, 7);
+//#define rgblight_set_led0        rgblight_setrgb_at(0, 55, 40, 10);rgblight_setrgb_at(0, 55, 40, 9);rgblight_setrgb_at(0, 55, 40, 8);rgblight_setrgb_at(0, 55, 40, 7);
+#define rgblight_set_led0		 rgblight_setrgb(0, 55, 40);
 #define rgblight_set_led1        rgblight_setrgb_at(0, 100, 85, 10);
 #define rgblight_set_led2        rgblight_setrgb_at(50, 0, 100, 10);
 #define rgblight_set_led3        rgblight_setrgb_at(0, 55, 40, 10);
@@ -213,12 +176,14 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
   switch(id){
 	case APO_M:
 	  if(record->event.pressed){
-	    add_key(KC_QUOT);
+		add_key(KC_QUOT);
+		send_keyboard_report();
         add_key(KC_M);
         send_keyboard_report();
 	  }else{
+		del_key(KC_M);
+		send_keyboard_report();
 		del_key(KC_QUOT);
-        del_key(KC_M);
         send_keyboard_report();
 	  }
   }

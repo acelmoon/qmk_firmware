@@ -236,7 +236,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
  //Hold for layer 3, tap once for quote, tap twice for enter
  [QUOT_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(quotlayer_start, quotlayer_finished, quotlayer_reset, 130),
  //Hold for layer 1, tap for escape
- [ESC_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(esclayer_start, esclayer_finished, esclayer_reset, 170),
+ [ESC_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(esclayer_start, esclayer_finished, esclayer_reset, 160),
  //Hold for layer 1, tap for space
  [SPC_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(spclayer_start, spclayer_finished, spclayer_reset, 160),
  //Hold for Left GUI, tap for slash, tap hold for layer 2, double tap for slash
