@@ -23,35 +23,35 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
  
 	//Numpad
-	[_FN0] = LAYOUT_4x4(
+	[_FN0] = LAYOUT_ortho_4x4(
 		KC_7,    KC_8,    KC_9,   KC_BSPC,
 		KC_4,    KC_5,    KC_6,   KC_MINS,
 		KC_1,    KC_2,    KC_3,   KC_PLUS,
 		LT(1,KC_0), KC_0, KC_DOT, LT(1,KC_ENT)),
 		
 	//Arrows & Extra keys
-	[_FN1] = LAYOUT_4x4(
+	[_FN1] = LAYOUT_ortho_4x4(
 		_______, KC_UP,   _______, TG(2),
 		KC_LEFT, KC_DOWN, KC_RGHT, KC_SLSH,
 		_______, _______, _______, KC_ASTR,
 		LT(4,KC_0), _______, KC_COMM, LT(4,KC_ENT)),
 		
 	//Nav Cluster
-	[_FN2] = LAYOUT_4x4(
+	[_FN2] = LAYOUT_ortho_4x4(
 		KC_INS,  KC_HOME, KC_PGUP, TG(2),
 		KC_DEL,  KC_END,  KC_PGDN, _______,
 		KC_NO,   KC_UP,   KC_NO,   _______,
 		KC_LEFT, KC_DOWN, KC_RGHT, _______),
 		
 	//Undecided, likely mouse controls
-	[_FN3] = LAYOUT_4x4(
+	[_FN3] = LAYOUT_ortho_4x4(
 		_______, _______, _______, _______,
 		_______, _______, _______, TG(3),
 		_______, _______, _______, _______,
 		_______, _______, _______, _______),
 		
 	//
-	[_FN4] = LAYOUT_4x4(
+	[_FN4] = LAYOUT_ortho_4x4(
 		//RGB_HUI, RGB_SAI, RGB_VAI, RESET,
 		//RGB_HUD, RGB_SAD, RGB_VAD, RGB_MOD,
 		_______, _______, _______, RESET,
@@ -60,7 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		KC_NO,   KC_VOLD, KC_VOLU, KC_NO),
 		
 	//Blank
-	[_FN5] = LAYOUT_4x4(
+	[_FN5] = LAYOUT_ortho_4x4(
 		_______, _______, _______, _______,
 		_______, _______, _______, _______,
 		_______, _______, _______, _______,
@@ -97,8 +97,9 @@ uint32_t layer_state_set_user(uint32_t state) {
       break;}
 #endif
   return state;
-}
+};
 
+/*
 enum function_id {
 	RGB_CYAN,
 };
@@ -113,4 +114,5 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
 	  rgblight_setrgb(0, 55, 40);
 	  break;
   }
-}
+};
+*/

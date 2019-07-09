@@ -34,7 +34,7 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 //#define DISABLE_LEADER
 
 /* Debounce reduces chatter (unintended double-presses) - Set 0 if debouncing isn't needed */
-#define DEBOUNCING_DELAY 0
+//#define DEBOUNCING_DELAY 0
 
 /* sets delay between tapping and holding */
 #ifdef TAPPING_TERM

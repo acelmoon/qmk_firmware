@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //4: Lighting
   [_FN4] = LAYOUT_all(
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_SLEP, _______, KC_PWR,
-	  _______, RGB_HUI, RGB_SAI, RGB_VAI, F(0),    _______, _______, _______, _______, _______, _______, _______, _______,          _______,
+	  _______, RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, _______, _______, _______, _______, _______, _______, _______,          _______,
 	  RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_M_P, _______, _______, _______, _______, _______, _______, _______, KC_NO,            _______,
       _______, KC_NO,   BL_DEC , BL_STEP, BL_INC , RGB_TOG, _______, TOG_NKR, _______, _______, _______, _______, _______, _______, _______,
       KC_NO  , KC_NO  , _______, _______,                _______,                      _______, _______, _______, _______, _______, RESET),
@@ -105,22 +105,54 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	return true;
 }
 
+//#define rgblight_set_led0        rgblight_setrgb_at(0, 55, 40, 10);rgblight_setrgb_at(0, 55, 40, 9);rgblight_setrgb_at(0, 55, 40, 8);rgblight_setrgb_at(0, 55, 40, 7);
+#define rgblight_set_led0		 rgblight_setrgb(0, 55, 40);
+#define rgblight_set_led1        rgblight_setrgb_at(0, 100, 85, 10);
+#define rgblight_set_led2        rgblight_setrgb_at(50, 0, 100, 10);
+#define rgblight_set_led3        rgblight_setrgb_at(0, 55, 40, 10);
+#define rgblight_set_led4        rgblight_setrgb_at(100, 100, 100, 10);
+#define rgblight_set_led5        rgblight_setrgb_at(0, 100, 0, 10);
+#define rgblight_set_led6        rgblight_setrgb_at(0, 0, 0, 9);rgblight_setrgb_at(0, 0, 0, 8);rgblight_setrgb_at(0, 0, 0, 7);
+
+uint32_t layer_state_set_user(uint32_t state) {
+#ifdef RGBLIGHT_ENABLE
+  switch (biton32(state)) {
+	 /*
+    case 1:
+      rgblight_set_led1;
+      break;
+    case 2:
+      rgblight_set_led2;
+      break;
+    case 3:
+      rgblight_set_led3;
+      break;
+	case 4:
+      rgblight_set_led4;
+      break;
+	case 5:
+      rgblight_set_led5;
+      break;
+	case 6:
+      rgblight_set_led6;
+      break;
+	  */
+    default: //for any other layers, or the default layer
+      rgblight_set_led0;
+      break;}
+#endif
+  return state;
+}
+
 enum function_id {
-	RGB_CYAN,
 	APO_M,
 };
 
 const uint16_t PROGMEM fn_actions[] = {
-  [0]  = ACTION_FUNCTION(RGB_CYAN),
-  [1]  = ACTION_FUNCTION(APO_M),
+  [0]  = ACTION_FUNCTION(APO_M),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
-  switch(id){
-	case RGB_CYAN:
-	  rgblight_setrgb(0, 55, 40);
-	  break;
-  }
   switch(id){
 	case APO_M:
 	  if(record->event.pressed){
