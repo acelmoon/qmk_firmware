@@ -46,7 +46,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, KC_NO,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
       _______, _______, KC_APP,  _______,                _______,                      _______, _______, _______, KC_MUTE, KC_VOLD, KC_VOLU),
 	  
-  //2: Functions
+  //2: F-Keys & Functions
   [_FN2] = LAYOUT_all(
       KC_GRV,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______, _______,
       KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,           _______,
@@ -54,7 +54,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	  _______, KC_NO,   KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, BL_TOGG, _______, KC_MUTE, _______, _______, _______, _______, _______, _______,
       MO(4),   _______, KC_MUTE, _______,                _______,                      _______, _______, _______, _______, KC_VOLD, KC_VOLU),
 	  
-  //3: Home-Row Arrowsxx
+  //3: Home-Row Arrows & Extra Keys
   [_FN3] = LAYOUT_all(
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
       _______, _______, _______, _______, _______, _______, _______, _______, KC_UP,   KC_LBRC, KC_RBRC, KC_BSLS, _______,          _______,
@@ -73,11 +73,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //5: Mouse Controls
   [_FN5] = LAYOUT_all(
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NO,   _______,
-      _______, _______, _______, _______, _______, _______, _______, _______, KC_MS_U, _______, _______, _______, _______,          _______,
+      _______, _______, _______, _______, _______, _______, _______, KC_WH_U, KC_MS_U, KC_WH_D, _______, _______, _______,          _______,
       _______, _______, _______, _______, _______, _______, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1, _______, KC_NO,            _______,
-      _______, KC_NO,   _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NO,   _______, KC_NO,
+      _______, KC_NO,   _______, _______, _______, _______, _______, KC_WH_L, KC_WH_R, _______, _______, _______, KC_NO,   _______, KC_NO,
       _______, _______, _______, KC_NO,                _______,                        KC_NO,   _______, _______, KC_NO,   _______, _______),
-	  
+  /*
   //6: Blank
   [_FN6] = LAYOUT_all(
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,   KC_TRNS,
@@ -85,20 +85,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,            KC_TRNS,
       KC_TRNS, KC_NO,   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,   KC_TRNS, KC_NO,
       KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,                KC_TRNS,                        KC_NO,   KC_TRNS, KC_TRNS, KC_NO,   KC_TRNS, KC_TRNS),
-  
+  */
 };
-
-const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt) {
-	switch (id) {
-	}
-	return MACRO_NONE;
-}
 
 void matrix_init_user(void) {
 	rgblight_setrgb(0, 55, 40);
-}
-
-void matrix_scan_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {

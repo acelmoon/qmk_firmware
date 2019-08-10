@@ -11,6 +11,7 @@
 #define _FN6 6
 #define _FN7 7
 #define _FN8 8
+#define _FN9 9
 
 //User Specific Tap Dance Defines
 #define TAB_ESC TD(TABESC)
@@ -44,15 +45,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_FN1] = LAYOUT_625_space(
 		KC_EQL,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
 		_______, _______, _______, _______, _______, _______, KC_NUBS, KC_NUHS, KC_GRV,  KC_SCLN, KC_ENT,
-		_______, _______, _______, _______, _______, KC_BSPC, _______, KC_BSLS, KC_SLSH, KC_RSFT, _______,
-		_______, KC_NO,   KC_APP,                    _______,                            KC_BSPC, _______),
+		_______, _______, _______, _______, _______, KC_BSPC, _______, KC_BSLS, KC_SLSH, KC_RSFT, MO(5),
+		MO(5),   KC_NO,   KC_APP,                    _______,                            KC_BSPC, MO(5)),//LT(5,KC_SPC)
 
 	//2: F-Keys & Functions
     [_FN2] = LAYOUT_625_space(
 		KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
 		_______, KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_INS,  KC_PAUS, KC_PSCR, _______, _______, _______,
 		_______, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, BL_TOGG, _______, KC_MUTE, _______, _______, _______,
-		MO(4),   KC_NO,   KC_MUTE,                   MO(7),                              KC_VOLD, KC_VOLU),
+		MO(4),   KC_NO,   KC_MUTE,                   MO(8),                              KC_VOLD, KC_VOLU),
 
 	//3: Home-Row Arrows & Extra Keys
 	[_FN3] = LAYOUT_625_space(
@@ -63,34 +64,41 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		
 	//4: Lighting
 	[_FN4] = LAYOUT_625_space(
-		TG(5),   RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, _______, _______, _______, _______, KC_SLEP, KC_PWR,
+		TG(6),   RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, _______, _______, _______, _______, KC_SLEP, KC_PWR,//F(1)
 		RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_M_P, _______, _______, _______, _______, _______, _______,
 		_______, BL_DEC,  BL_TOGG, BL_INC,  RGB_TOG, _______, TOG_NKR, _______, _______, _______, _______,
-		KC_NO,   KC_NO,   TG(6),                     _______,                            _______, RESET),
+		KC_NO,   KC_NO,   TG(7),                     _______,                            _______, RESET),
 	
-	//5: Dedicated Arrows
+	//5: Shifted Keys
 	[_FN5] = LAYOUT_625_space(
+		KC_PLUS, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
+		_______, _______, _______, _______, _______, _______, _______, KC_NUHS, KC_TILD, KC_COLN, KC_ENT,
+		_______, _______, _______, _______, _______, _______, _______, KC_RABK, KC_QUES, _______, KC_NO,
+		KC_NO,   _______, _______,                   _______,                            _______, KC_NO),
+		
+	//6: Dedicated Arrows
+	[_FN6] = LAYOUT_625_space(
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, KC_UP,   KC_RGHT,
 		_______, _______, _______,                   _______,                            KC_LEFT, KC_DOWN),
 	
-	//6: Func Space
-	[_FN6] = LAYOUT_625_space(
+	//7: Func Space
+	[_FN7] = LAYOUT_625_space(
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, _______, _______,                   LT1_SPC,                            _______, _______),
 		
-	//7: Mouse Keys
-	[_FN7] = LAYOUT_625_space(
+	//8: Mouse Keys
+	[_FN8] = LAYOUT_625_space(
 		_______, _______, _______, _______, _______, _______, _______, KC_WH_U, KC_MS_U, KC_WH_D, _______, _______,
 		_______, _______, _______, _______, _______, _______, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1,
 		_______, _______, _______, _______, _______, _______, _______, KC_WH_L, KC_WH_R, _______, _______,
 		_______, _______, _______,                   _______,                            _______, _______),
 	/*
-	//8: Blank
-	[_FN8] = LAYOUT_625_space(
+	//9: Blank
+	[_FN9] = LAYOUT_625_space(
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
@@ -150,6 +158,7 @@ const uint16_t PROGMEM fn_actions[] = {
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
+  static uint8_t shift_esc_shift_mask;
   switch(id){
 	case APO_M:
 	  if(record->event.pressed){
