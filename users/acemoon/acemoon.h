@@ -28,6 +28,9 @@ enum {
   SPC_LAYER,//LT(1,KC_SPC)
   SLSH_LAYER,//LGUI_T(KC_SLSH),layer2/slash
   RSHIFT_DOT,//RSFT_T(KC_DOT)
+  DEL_LAYER,//LT(1,KC_DEL)
+  ENTER_LAYER,//LT(3,KC_ENT)
+  RSHIFT_SLSH,//RSFT_T(KC_SLSH)
 
 };
 
@@ -58,4 +61,15 @@ void slshlayer_reset (td_variables);
 void rshiftdot_start (td_variables);
 void rshiftdot_finished (td_variables);
 void rshiftdot_reset (td_variables);
- 
+
+void dellayer_start (td_variables);
+void dellayer_finished (td_variables);
+void dellayer_reset (td_variables);
+
+void enterlayer_start (td_variables);
+void enterlayer_finished (td_variables);
+void enterlayer_reset (td_variables);
+
+void rshiftslsh_start(td_variables);
+void rshiftslsh_finished (td_variables);
+void rshiftslsh_reset (td_variables);

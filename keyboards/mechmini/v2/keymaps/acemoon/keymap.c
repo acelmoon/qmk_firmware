@@ -19,6 +19,9 @@
 #define SPC_LT1 TD(SPC_LAYER)
 #define SLS_LT2 TD(SLSH_LAYER)
 #define SFT_DOT TD(RSHIFT_DOT)
+#define DEL_LT1 TD(DEL_LAYER)
+#define ENT_LT3 TD(ENTER_LAYER)
+#define SFT_SLS TD(RSHIFT_SLSH)
 
 //Long Keycode Defines
 #define _______ KC_TRNS

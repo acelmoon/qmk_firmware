@@ -17,6 +17,7 @@ UNICODE_ENABLE  = yes   # Unicode
 #RGBLIGHT_ENABLE = yes   # Enable keyboard underglow functionality (+4870)
 AUDIO_ENABLE = no       # Audio output on port ??
 MIDI_ENABLE      = no   # MIDI controls
+FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
 BLUETOOTH_ENABLE = no   # Enable Bluetooth with the Adafruit EZ-Key HID
 
 SRC += acemoon.c

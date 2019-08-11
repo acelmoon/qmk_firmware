@@ -29,12 +29,12 @@ along with this program. If not, see <http://www.gnu.org/licenses/>.
 #define NO_PRINT
 #endif // !NO_PRINT
 #define NO_ACTION_ONESHOT
-#define NO_ACTION_MACRO
+//#define NO_ACTION_MACRO
 //#define NO_ACTION_FUNCTION
 //#define DISABLE_LEADER
 
 /* Debounce reduces chatter (unintended double-presses) - Set 0 if debouncing isn't needed */
-//#define DEBOUNCING_DELAY 0
+//#define DEBOUNCE 0
 
 /* sets delay between tapping and holding */
 #ifdef TAPPING_TERM
