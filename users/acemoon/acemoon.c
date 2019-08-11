@@ -228,20 +228,90 @@ void rshiftdot_reset (qk_tap_dance_state_t *state, void *user_data) {
   unregister_code (KC_DOT);
 }
 
+void dellayer_start (qk_tap_dance_state_t *state, void *user_data) {
+}
+
+void dellayer_finished (qk_tap_dance_state_t *state, void *user_data) {
+  if (state->count == 1) {
+    if (tap_held) layer_on(1);
+    //key has not been interrupted, but the key is not held. Means you want to send a 'TAP'.
+    else register_code (KC_DEL);
+  }else {
+	register_code (KC_DEL);
+  }
+}
+
+void dellayer_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if(IS_LAYER_ON(1))layer_off(1);
+  else unregister_code (KC_DEL);
+}
+
+void enterlayer_start (qk_tap_dance_state_t *state, void *user_data) {
+	if(!IS_LAYER_ON(3)){layer_on(3);}
+	if(state->interrupted)
+	{
+		register_code (KC_ENT);
+	}
+}
+
+void enterlayer_finished (qk_tap_dance_state_t *state, void *user_data) {
+  if (!state->pressed) {
+	//key has not been held, send finds the count and send tap
+	if(IS_LAYER_ON(3)){layer_off(3);}
+	if (state->count == 1) {register_code (KC_ENT);}
+	if (state->count == 2) {register_code (KC_ENT);}
+  }
+}
+
+void enterlayer_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if(IS_LAYER_ON(3)){layer_off(3);}
+  if (state->count == 1) {unregister_code (KC_ENT);}
+  else {unregister_code (KC_ENT);}
+}
+
+void rshiftslsh_start(qk_tap_dance_state_t *state, void *user_data) {
+	register_code (KC_RSFT);
+}
+
+void rshiftslsh_finished (qk_tap_dance_state_t *state, void *user_data) {
+  if (!state->pressed) {
+	unregister_code (KC_RSFT);
+	if (state->count == 1) {
+		register_code (KC_SLSH);
+	}
+	if (state->count == 2) {
+		register_code (KC_SLSH);
+		unregister_code (KC_SLSH);
+		register_code (KC_SLSH);
+	}
+  }
+}
+
+void rshiftslsh_reset (qk_tap_dance_state_t *state, void *user_data) {
+  unregister_code (KC_RSFT);
+  unregister_code (KC_SLSH);
+}
+
 //All tap dance functions go here.
 qk_tap_dance_action_t tap_dance_actions[] = {
  //[X_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL,x_finished, x_reset),
  //Tap once for tab, tap twice for escape
- [TABESC] = ACTION_TAP_DANCE_FN_ADVANCED_TIME (NULL, tabesc_finished, tabesc_reset, 160),
+ [TABESC] = ACTION_TAP_DANCE_FN_ADVANCED_TIME (NULL, tabesc_finished, tabesc_reset, 150),
  //Hold for layer 3, tap once for quote, tap twice for enter
  [QUOT_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(quotlayer_start, quotlayer_finished, quotlayer_reset, 130),
  //Hold for layer 1, tap for escape
- [ESC_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(esclayer_start, esclayer_finished, esclayer_reset, 160),
+ [ESC_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(esclayer_start, esclayer_finished, esclayer_reset, 150),
  //Hold for layer 1, tap for space
- [SPC_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(spclayer_start, spclayer_finished, spclayer_reset, 160),
+ [SPC_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(spclayer_start, spclayer_finished, spclayer_reset, 130),
  //Hold for Left GUI, tap for slash, tap hold for layer 2, double tap for slash
  [SLSH_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(NULL, slshlayer_finished, slshlayer_reset, 150),
  //Hold for Right Shift, tap for dot
  [RSHIFT_DOT] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(rshiftdot_start, rshiftdot_finished, rshiftdot_reset, 100),
+ //Hold for layer 1, tap for delete
+ [DEL_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(dellayer_start, dellayer_finished, dellayer_reset, 150),
+ //Hold for layer 3, tap once or twice for enter
+ [ENTER_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(enterlayer_start, enterlayer_finished, enterlayer_reset, 130),
+ //Hold for Right Shift, tap for slash
+ [RSHIFT_SLSH] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(rshiftslsh_start, rshiftslsh_finished, rshiftslsh_reset, 100),
  //Other declarations go here, separated by commas
 };

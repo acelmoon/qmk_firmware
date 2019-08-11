@@ -15,6 +15,9 @@
 #define SPC_LT1 TD(SPC_LAYER)
 #define SLS_LT2 TD(SLSH_LAYER)
 #define SFT_DOT TD(RSHIFT_DOT)
+#define DEL_LT1 TD(DEL_LAYER)
+#define ENT_LT3 TD(ENTER_LAYER)
+#define SFT_SLS TD(RSHIFT_SLSH)
 
 #define _______ KC_TRNS
 #define LT3_QUO LT(3,KC_QUOT)
@@ -36,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_LBRC, KC_RBRC,          KC_BSLS,
       KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    LT3_SCN, QUO_LT3, KC_NO,            KC_ENT,//TD(QUOT_LAYER)
       KC_LSFT, KC_NO,   KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, SFT_DOT, SFT_SLH, KC_NO,   KC_RSFT, KC_NO,
-      ESC_LT1, MO(2),   KC_LALT, KC_NO,                       KC_SPC,                  KC_NO,   SLS_LT2, _______, KC_NO,   MO(5), LT1_DEL),
+      ESC_LT1, MO(2),   KC_LALT, KC_NO,                       KC_SPC,                  KC_NO,   SLS_LT2, _______, KC_NO,   MO(5), DEL_LT1),
 
   //1: Numbers & F-keys
   [_FN1] = LAYOUT_all(
@@ -59,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
       _______, _______, _______, _______, _______, _______, _______, _______, KC_UP,   KC_LBRC, KC_RBRC, KC_BSLS, _______,          _______,
       _______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______, KC_NO,            _______,
-      _______, KC_NO,   _______, _______, _______, _______, _______, _______, F(1),    _______, _______, _______, _______, _______, _______,
+      _______, KC_NO,   _______, _______, _______, _______, _______, _______, F(0),    _______, _______, _______, _______, _______, _______,
       _______, _______, _______, _______,                _______,                      _______, _______, _______, _______, _______, _______),
 	  
   //4: Lighting
