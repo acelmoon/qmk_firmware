@@ -22,13 +22,12 @@
 #define DEL_LT1 TD(DEL_LAYER)
 #define ENT_LT3 TD(ENTER_LAYER)
 #define SFT_SLS TD(RSHIFT_SLSH)
+#define SCN_LT3 TD(SCLN_LAYER)
 
 //Long Keycode Defines
 #define _______ KC_TRNS
 #define LT3_QUO LT(3,KC_QUOT)
 #define LT1_SPC LT(1,KC_SPC)
-#define GUI_SLS LGUI_T(KC_SLSH)
-#define LT1_DEL LT(1,KC_DEL)
 #define TOG_NKR MAGIC_TOGGLE_NKRO
 
 

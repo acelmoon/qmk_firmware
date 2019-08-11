@@ -292,6 +292,29 @@ void rshiftslsh_reset (qk_tap_dance_state_t *state, void *user_data) {
   unregister_code (KC_SLSH);
 }
 
+void sclnlayer_start (qk_tap_dance_state_t *state, void *user_data) {
+	if(!IS_LAYER_ON(3)){layer_on(3);}
+	if(state->interrupted)
+	{
+		register_code (KC_SCLN);
+	}
+}
+
+void sclnlayer_finished (qk_tap_dance_state_t *state, void *user_data) {
+  if (!state->pressed) {
+	//key has not been held, send finds the count and send tap
+	if(IS_LAYER_ON(3)){layer_off(3);}
+	if (state->count == 1) {register_code (KC_SCLN);}
+	if (state->count == 2) {register_code (KC_ENT);}
+  }
+}
+
+void sclnlayer_reset (qk_tap_dance_state_t *state, void *user_data) {
+  if(IS_LAYER_ON(3)){layer_off(3);}
+  if (state->count == 1) {unregister_code (KC_SCLN);}
+  else {unregister_code (KC_ENT);}
+}
+
 //All tap dance functions go here.
 qk_tap_dance_action_t tap_dance_actions[] = {
  //[X_CTL] = ACTION_TAP_DANCE_FN_ADVANCED(NULL,x_finished, x_reset),
@@ -313,5 +336,7 @@ qk_tap_dance_action_t tap_dance_actions[] = {
  [ENTER_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(enterlayer_start, enterlayer_finished, enterlayer_reset, 130),
  //Hold for Right Shift, tap for slash
  [RSHIFT_SLSH] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(rshiftslsh_start, rshiftslsh_finished, rshiftslsh_reset, 100),
+ //Hold for layer 3, tap once for semicolon, tap twice for enter
+ [SCLN_LAYER] = ACTION_TAP_DANCE_FN_ADVANCED_TIME(sclnlayer_start, sclnlayer_finished, sclnlayer_reset, 130),
  //Other declarations go here, separated by commas
 };
