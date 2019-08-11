@@ -17,6 +17,7 @@
  * | 30  | 31 | 32  |   34      |  35         | 39  | 3A | 3B  |
  * `-----------------------------------------------------------'
  */
+/*
 #define LAYOUT( \
     k00, k01, k02, k03, k04, k05, k06, k07, k08, k09, k0a, k0b, \
     k10, k11, k12, k13, k14, k15, k16, k17, k18, k19,      k1b,  \
@@ -28,11 +29,23 @@
     {k20, XXX, k22, k23, k24, k25, k26, k27, k28, k29, k2a, k2b}, \
     {k30, k31, k32, XXX, k34, k35, XXX, XXX, XXX, k39, k3a, k3b} \
 }
+*/
+#define LAYOUT( \
+    K000, K001, K002, K003, K004, K005, K006, K007, K008, K009, K010, K011, \
+    K100, K101, K102, K103, K104, K105, K106, K107, K108, K109,       K111, \
+    K200,       K202, K203, K204, K205, K206, K207, K208, K209, K210, K211, \
+    K300, K301, K302,       K304, K305,                   K309, K310, K311  \
+) { \
+    { K000,  K001,  K002,  K003,  K004,  K005,  K006,  K007,  K008,  K009,  K010,  K011 }, \
+    { K100,  K101,  K102,  K103,  K104,  K105,  K106,  K107,  K108,  K109,  KC_NO, K111 }, \
+    { K200,  KC_NO, K202,  K203,  K204,  K205,  K206,  K207,  K208,  K209,  K210,  K211 }, \
+    { K300,  K301,  K302,  KC_NO, K304,  K305,  KC_NO, KC_NO, KC_NO, K309,  K310,  K311 }  \
+}
 
 
 
 
-void matrix_init_user(void);
-void matrix_scan_user(void);
+//void matrix_init_user(void);
+//void matrix_scan_user(void);
 
 #endif

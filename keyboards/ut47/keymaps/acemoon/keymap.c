@@ -14,7 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
-#include "acemoon.h"
+#include "acemoon.h" //User Space Include
 #ifdef LED_ENABLE
   #include "protocol/serial.h"
 #endif
@@ -39,23 +39,16 @@
 #define DEL_LT1 TD(DEL_LAYER)
 #define ENT_LT3 TD(ENTER_LAYER)
 #define SFT_SLS TD(RSHIFT_SLSH)
+#define SCN_LT3 TD(SCLN_LAYER)
 
 //Long Keycode Defines
 #define _______ KC_TRNS
-#define LT3_QUO LT(3,KC_QUOT)
-#define GUI_SLS LGUI_T(KC_SLSH)
-#define LT1_DEL LT(1,KC_DEL)
 #define TOG_NKR MAGIC_TOGGLE_NKRO
 //Long Keycode Defines Set 2
 #define LT1_SPC LT(1,KC_SPC)
-#define LT3_ENT LT(3,KC_ENT)
-#define RSF_DOT RSFT_T(KC_DOT)
-#define RSF_SLS RSFT_T(KC_SLSH)
-#define LT1_ESC LT(1,KC_ESC)
-//Long Keycode Defines Set 3
 #define LT7_SPC LT(7,KC_SPC)
 
-
+//LED Custom Keycodes
 enum custom_keycodes {
   LED_TOG = SAFE_RANGE,
   LED_INC,
@@ -75,7 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |-------------------------------------------------------------------------+
    * | Shift |  Z  |  X  |  C  |  V  |  B  |  N  |  M  |  ,  |  .  |  /  |  L1 |
    * |-------------------------------------------------------------------------+
-   * | Esc | L2 |  Alt |    |  L1   |    Space    |     |    |  L4 | Gui | Del |
+   * | Esc | L2 |   | Alt | Space |    Space    | L6 |  SlsGui  |   | L2 | Del |
    * `-------------------------------------------------------------------------'
    */
 	//0: Base Layer
@@ -141,19 +134,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 void matrix_init_user(void) {
 	#ifdef LED_ENABLE
-		serial_init();
+		serial_init(); //Serial Init for LED_ENABLE
 	#endif
 }
 
 //LED keymap functions
 #ifdef LED_ENABLE
-	void led_tog(void){serial_send(100);}
-	void led_inc(void){serial_send(101);}
-	void led_dec(void){serial_send(99);}
-	
-	void led_mod(void) {serial_send(111);}
-	
-	void led_default(void){serial_send(135);}
+	void led_tog(void){serial_send(100);} //LED On/Off Toggle
+	void led_inc(void){serial_send(101);} //LED brightness increase
+	void led_dec(void){serial_send(99);} //LED brightness decrease
+	void led_mod(void) {serial_send(111);} //LED mode change
+	void led_default(void){serial_send(135);} //LED Default mode set
 	
 	//void (void){serial_send();} //serial send function
 

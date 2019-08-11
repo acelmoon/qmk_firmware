@@ -32,7 +32,6 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define MATRIX_COLS 12
 
 // ROWS: Top to bottom, COLS: Left to right
-
 #define MATRIX_ROW_PINS { F4, F5, F6, F7}
 #define MATRIX_COL_PINS { F1, F0, E6, C7, C6, B0, D4, B1, B7, B5, B4, D7}
 #define UNUSED_PINS
@@ -56,13 +55,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
-/* Backlight configuration
- */
+/* Backlight configuration*/
 #define BACKLIGHT_LEVELS 4
 
-/* Underlight configuration
- */
-
+/* Underlight configuration*/
 #define RGB_DI_PIN D3
 #define RGBLIGHT_ANIMATIONS
 #define RGBLED_NUM 4     // Number of LEDs

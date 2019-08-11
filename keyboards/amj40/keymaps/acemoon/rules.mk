@@ -5,3 +5,4 @@
 #
 BACKLIGHT_ENABLE = no  # Enable keyboard backlight functionality (+1150)
 RGBLIGHT_ENABLE = no   # Enable keyboard underglow functionality (+4870)
+TAP_DANCE_ENABLE = yes  	# Enable Tap Dance (+~1000)

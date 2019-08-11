@@ -11,12 +11,12 @@ SLEEP_LED_ENABLE = no       # Breathing sleep LED during USB suspend
 # if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 NKRO_ENABLE = yes            # USB Nkey Rollover
 UNICODE_ENABLE = yes         # Unicode
+TAP_DANCE_ENABLE = yes  	# Enable Tap Dance (+~1000)
 
 MIDI_ENABLE = no            # MIDI support (+2400 to 4200, depending on config)
 BLUETOOTH_ENABLE = no       # Enable Bluetooth with the Adafruit EZ-Key HID
 AUDIO_ENABLE = no           # Audio output on port C6
 FAUXCLICKY_ENABLE = no      # Use buzzer to emulate clicky switches
-TAP_DANCE_ENABLE = yes  	# Enable Tap Dance (+~1000)
 
 RGBLIGHT_ENABLE = no        # Enable keyboard underglow functionality (+4870)
 BACKLIGHT_ENABLE = no       # Enable keyboard backlight functionality on B7 by default

@@ -31,6 +31,7 @@ enum {
   DEL_LAYER,//LT(1,KC_DEL)
   ENTER_LAYER,//LT(3,KC_ENT)
   RSHIFT_SLSH,//RSFT_T(KC_SLSH)
+  SCLN_LAYER,//LT(3,KC_SCLN),enter
 
 };
 
@@ -73,3 +74,7 @@ void enterlayer_reset (td_variables);
 void rshiftslsh_start(td_variables);
 void rshiftslsh_finished (td_variables);
 void rshiftslsh_reset (td_variables);
+
+void sclnlayer_start (td_variables);
+void sclnlayer_finished (td_variables);
+void sclnlayer_reset (td_variables);

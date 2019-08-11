@@ -1,5 +1,6 @@
 #include QMK_KEYBOARD_H
 
+//Layer Defines
 #define _FN0 0
 #define _FN1 1
 #define _FN2 2
@@ -7,6 +8,7 @@
 #define _FN4 4
 #define _FN5 5
 
+//Long Keycode Defines
 #define _______ KC_TRNS
 #define TOG_NKR MAGIC_TOGGLE_NKRO
 
