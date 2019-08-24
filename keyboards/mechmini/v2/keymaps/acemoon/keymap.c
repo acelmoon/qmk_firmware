@@ -30,6 +30,12 @@
 #define LT1_SPC LT(1,KC_SPC)
 #define TOG_NKR MAGIC_TOGGLE_NKRO
 
+// Defines the keycodes used by our macros in process_record_user
+enum custom_keycodes {
+  UwU = SAFE_RANGE,
+  AYAYA,
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -39,8 +45,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		TAB_ESC, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
 		KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    QUO_LT3,//LT3_QUO
 		KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, SFT_DOT, MO(1),
-	  //ESC_LT1, MO(2),   KC_LALT,                   LT1_SPC,                            SLS_LT2, LT1_DEL),//SPC_LT1 GUI_SLS
-		ESC_LT1, MO(2),   KC_LALT,                   KC_SPC,                             SLS_LT2, LT1_DEL),
+	  //ESC_LT1, MO(2),   KC_LALT,                   LT1_SPC,                            SLS_LT2, DEL_LT1),//SPC_LT1 GUI_SLS
+		ESC_LT1, MO(2),   KC_LALT,                   KC_SPC,                             SLS_LT2, DEL_LT1),
 
 	//1: Number & Extra Keys
 	[_FN1] = LAYOUT_625_space(
@@ -52,8 +58,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//2: F-Keys & Functions
     [_FN2] = LAYOUT_625_space(
 		KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-		_______, KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_INS,  KC_PAUS, KC_PSCR, _______, _______, _______,
-		_______, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, BL_TOGG, _______, KC_MUTE, _______, _______, _______,
+		UwU    , KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_INS,  KC_PAUS, KC_PSCR, _______, _______, _______,
+		AYAYA  , KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, BL_TOGG, _______, KC_MUTE, _______, _______, _______,
 		MO(4),   KC_NO,   KC_MUTE,                   MO(7),                              KC_VOLD, KC_VOLU),
 
 	//3: Home-Row Arrows & Extra Keys
@@ -104,14 +110,37 @@ void matrix_init_user(void) {
 	rgblight_setrgb(0, 55, 40);
 }
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case UwU:
+      if (record->event.pressed) {
+        // when keycode is pressed
+        SEND_STRING("UwU");
+      } else {
+        // when keycode is released
+      }
+      break;
+	case AYAYA:
+      if (record->event.pressed) {
+        // when keycode is pressed
+        SEND_STRING("AYAYA");
+      } else {
+        // when keycode is released
+      }
+      break;
+  }
+  return true;
+}
+
 //#define rgblight_set_led0        rgblight_setrgb_at(0, 55, 40, 10);rgblight_setrgb_at(0, 55, 40, 9);rgblight_setrgb_at(0, 55, 40, 8);rgblight_setrgb_at(0, 55, 40, 7);
 #define rgblight_set_led0		 rgblight_setrgb(0, 55, 40);
 #define rgblight_set_led1        rgblight_setrgb_at(0, 100, 85, 10);
 #define rgblight_set_led2        rgblight_setrgb_at(50, 0, 100, 10);
 #define rgblight_set_led3        rgblight_setrgb_at(0, 55, 40, 10);
 #define rgblight_set_led4        rgblight_setrgb_at(100, 100, 100, 10);
-#define rgblight_set_led5        rgblight_setrgb_at(0, 100, 0, 10);
-#define rgblight_set_led6        rgblight_setrgb_at(0, 0, 0, 9);rgblight_setrgb_at(0, 0, 0, 8);rgblight_setrgb_at(0, 0, 0, 7);
+#define rgblight_set_led5        rgblight_setrgb_at(0, 55, 40, 10);rgblight_setrgb_at(0, 0, 0, 9);rgblight_setrgb_at(0, 0, 0, 8);rgblight_setrgb_at(0, 0, 0, 7);
+#define rgblight_set_led6        rgblight_setrgb_at(0, 0, 0, 11);rgblight_setrgb_at(0, 0, 0, 10);rgblight_setrgb_at(0, 0, 0, 9);
+#define rgblight_set_led7        rgblight_setrgb_at(0, 55, 40, 10);rgblight_setrgb_at(50, 0, 100, 7);rgblight_setrgb_at(50, 0, 100, 6);rgblight_setrgb_at(50, 0, 100, 5);
 
 uint32_t layer_state_set_user(uint32_t state) {
 #ifdef RGBLIGHT_ENABLE
@@ -133,6 +162,9 @@ uint32_t layer_state_set_user(uint32_t state) {
       break;
 	case 6:
       rgblight_set_led6;
+      break;
+	case 7:
+      rgblight_set_led7;
       break;
     default: //for any other layers, or the default layer
       rgblight_set_led0;
