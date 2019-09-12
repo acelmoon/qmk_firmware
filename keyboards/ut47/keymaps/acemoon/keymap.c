@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		ESC_LT1, MO(2),   _______, KC_LALT, KC_SPC,      LT1_SPC,      MO(6),   SLS_LT2, _______, MO(2),   DEL_LT1),
 		
 	  //ESC_LT1, MO(2),   KC_LALT, KC_NO,   KC_NO,   KC_SPC,  KC_NO,   KC_NO,   SLS_LT2, MO(6),   LT1_DEL),
-
+	  
 	//1: Number & Extra Keys
 	[_FN1] = LAYOUT(
 		KC_EQL,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    KC_MINS,
@@ -104,8 +104,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	
 	//4: Lighting
 	[_FN4] = LAYOUT(
-		TG(5),   _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_SLEP, KC_PWR,
-		LED_MOD, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+		TG(5),   KC_BRIU, _______, _______, _______, _______, _______, _______, _______, LGUI(KC_L), KC_SLEP, KC_PWR,
+		LED_MOD, KC_BRID, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		_______, LED_DEC, LED_TOG, LED_INC, LED_DEF, _______, TOG_NKR, _______, _______, _______, _______, _______,
 		KC_NO,   KC_NO,   _______, _______, _______,     _______,      _______, _______, _______, _______, RESET),
 	
