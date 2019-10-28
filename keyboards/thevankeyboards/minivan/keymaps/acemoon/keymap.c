@@ -34,6 +34,12 @@
 #define LT3_ENT LT(3,KC_ENT)
 #define LT7_SPC LT(7,KC_SPC)
 
+// Defines the keycodes used by our macros in process_record_user
+enum custom_keycodes {
+  UwU = SAFE_RANGE,
+  AYAYA,
+};
+
 extern keymap_config_t keymap_config;
 
 #ifdef RGBLIGHT_ENABLE
@@ -47,7 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	
 	//0: Base Layer
 	[_FN0] = LAYOUT_arrow_command(
-		TAB_ESC, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
+		KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,//TAB_ESC
 		KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    QUO_LT3, ENT_LT3,
 		KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, SFT_DOT, SFT_SLS, MO(1),
 		ESC_LT1, MO(2),   KC_LALT, KC_LALT,      KC_SPC,          MO(6),        SLS_LT2, _______, MO(2),   DEL_LT1),
@@ -63,8 +69,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//2: F-Keys & Functions
     [_FN2] = LAYOUT_arrow_command(
 		KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
-		_______, KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_INS,  KC_PAUS, KC_PSCR, _______, _______, _______, _______,
-		_______, KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, _______, _______, KC_MUTE, _______, _______, _______, _______,
+		UwU,     KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_INS,  KC_PAUS, KC_PSCR, _______, _______, _______, _______,
+		AYAYA,   KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, _______, _______, KC_MUTE, _______, _______, _______, _______,
 		MO(4),   KC_NO,   _______, KC_MUTE,      _______,         _______,      _______, _______, KC_VOLD, KC_VOLU),
 
 	//3: Home-Row Arrows & Extra Keys
@@ -107,13 +113,18 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
-#define rgblight_set_led0		 rgblight_setrgb(0, 0, 0);rgblight_setrgb_at(0, 55, 40, 0);
-#define rgblight_set_led1        rgblight_setrgb_at(0, 100, 85, 1);
-#define rgblight_set_led2        rgblight_setrgb_at(50, 0, 100, 1);
-#define rgblight_set_led3        rgblight_setrgb_at(0, 55, 40, 1);
-#define rgblight_set_led4        rgblight_setrgb_at(100, 100, 100, 1);
-#define rgblight_set_led5        rgblight_setrgb_at(0, 100, 0, 1);
-#define rgblight_set_led6        rgblight_setrgb_at(0, 0, 0, 0);rgblight_setrgb_at(0, 0, 0, 1);rgblight_setrgb_at(0, 0, 0, 2);
+void keyboard_post_init_user(void) {
+	rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
+	rgblight_setrgb(0, 55, 40);
+}
+
+#define rgblight_set_led0		 rgblight_setrgb(0, 0, 0);//rgblight_setrgb_at(0, 55, 40, 0);
+#define rgblight_set_led1        rgblight_setrgb_at(0, 55, 40, 0);//rgblight_setrgb_at(0, 100, 85, 0);
+#define rgblight_set_led2        rgblight_setrgb_at(50, 0, 100, 0);
+#define rgblight_set_led3        rgblight_setrgb(0, 0, 0);
+#define rgblight_set_led4        rgblight_setrgb_at(100, 100, 100, 0);
+#define rgblight_set_led5        rgblight_setrgb_at(0, 100, 0, 0);
+#define rgblight_set_led6        rgblight_setrgb_at(5, 5, 5, 0);rgblight_setrgb_at(0, 0, 0, 1);rgblight_setrgb_at(0, 0, 0, 2);
 
 uint32_t layer_state_set_user(uint32_t state) {
 #ifdef RGBLIGHT_ENABLE
@@ -180,6 +191,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
 	*/
     #endif
+	
+	case UwU:
+      if (record->event.pressed) {
+        // when keycode is pressed
+        SEND_STRING("UwU");
+      } else {
+        // when keycode is released
+      }
+      break;
+	case AYAYA:
+      if (record->event.pressed) {
+        // when keycode is pressed
+        SEND_STRING("AYAYA");
+      } else {
+        // when keycode is released
+      }
+      break;
+	  
     default:
       result = true;
       break;
