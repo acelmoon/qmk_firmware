@@ -247,6 +247,7 @@ void dellayer_reset (qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void enterlayer_start (qk_tap_dance_state_t *state, void *user_data) {
+	if(IS_LAYER_ON(3)){layer_off(3);}
 	if(!IS_LAYER_ON(3)){layer_on(3);}
 	if(state->interrupted)
 	{
@@ -293,6 +294,7 @@ void rshiftslsh_reset (qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void sclnlayer_start (qk_tap_dance_state_t *state, void *user_data) {
+	if(IS_LAYER_ON(3)){layer_off(3);}
 	if(!IS_LAYER_ON(3)){layer_on(3);}
 	if(state->interrupted)
 	{

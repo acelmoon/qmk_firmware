@@ -42,11 +42,6 @@ enum custom_keycodes {
 
 extern keymap_config_t keymap_config;
 
-#ifdef RGBLIGHT_ENABLE
-//Following line allows macro to read current RGB settings
-extern rgblight_config_t rgblight_config;
-#endif
-
 extern uint8_t is_master;
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -113,9 +108,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 };
 
+void matrix_init_user(void) {
+  #ifdef RGBLIGHT_ENABLE
+    //RGB_current_mode = rgblight_config.mode;
+  #endif
+}
+
 void keyboard_post_init_user(void) {
+#ifdef RGBLIGHT_ENABLE
 	rgblight_mode(RGBLIGHT_MODE_STATIC_LIGHT);
-	rgblight_setrgb(0, 55, 40);
+	rgblight_setrgb(0, 0, 0);
+#endif
 }
 
 #define rgblight_set_led0		 rgblight_setrgb(0, 0, 0);//rgblight_setrgb_at(0, 55, 40, 0);
@@ -154,7 +157,6 @@ uint32_t layer_state_set_user(uint32_t state) {
   return state;
 }
 
-int RGB_current_mode;
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
   bool result = false;
@@ -171,7 +173,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         unregister_code(KC_LANG2);
       }
       break;
-	*/
     #ifdef RGBLIGHT_ENABLE
       //led operations - RGB mode change now updates the RGB_current_mode to allow the right RGB mode to be set after reactive keys are released
       case RGB_MOD:
@@ -181,7 +182,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             RGB_current_mode = rgblight_config.mode;
           }
         break;
-	/*
       case RGBRST:
           if (record->event.pressed) {
             eeconfig_update_rgblight_default();
@@ -189,9 +189,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             RGB_current_mode = rgblight_config.mode;
           }
         break;
+	#endif
 	*/
-    #endif
-	
 	case UwU:
       if (record->event.pressed) {
         // when keycode is pressed
@@ -208,19 +207,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         // when keycode is released
       }
       break;
-	  
     default:
       result = true;
       break;
   }
-
   return result;
-}
-
-void matrix_init_user(void) {
-  #ifdef RGBLIGHT_ENABLE
-    RGB_current_mode = rgblight_config.mode;
-  #endif
 }
 
 enum function_id {

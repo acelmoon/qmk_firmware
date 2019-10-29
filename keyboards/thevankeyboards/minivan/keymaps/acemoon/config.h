@@ -17,7 +17,7 @@
    //#define RGBLIGHT_EFFECT_ALTERNATING
 #endif
 
-// LED Setting: if you have KUMO you can use RGBLIGHT_ENABLE = yes
+// LED Setting: if you have KUMO and above you can use RGBLIGHT_ENABLE = yes
 #ifdef RGBLIGHT_ENABLE
   #define RGB_DI_PIN D0
   #define RGBLIGHT_TIMER
