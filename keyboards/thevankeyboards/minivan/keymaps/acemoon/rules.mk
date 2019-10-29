@@ -26,5 +26,5 @@ LED_ANIMATIONS = yes        # LED animations
 
 ifeq ($(strip $(LED_ANIMATIONS)), yes)
     # OPT_DEFS += -DRGBLIGHT_ANIMATIONS
-    OPT_DEFS += -DLED_ANIMATIONS
+    # OPT_DEFS += -DLED_ANIMATIONS
 endif
