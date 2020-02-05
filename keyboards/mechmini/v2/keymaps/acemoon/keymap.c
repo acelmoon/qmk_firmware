@@ -27,6 +27,7 @@
 //Long Keycode Defines
 #define _______ KC_TRNS
 #define LT3_QUO LT(3,KC_QUOT)
+#define LT2_DEL LT(2,KC_DEL)
 #define LT1_SPC LT(1,KC_SPC)
 #define TOG_NKR MAGIC_TOGGLE_NKRO
 
@@ -43,10 +44,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_FN0] = LAYOUT_625_space(
 	  //_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
 		KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,//TAB_ESC
-		KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    QUO_LT3,//LT3_QUO
+		KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    LT3_QUO,//QUO_LT3
 		KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, SFT_DOT, MO(1),
 	  //ESC_LT1, MO(2),   KC_LALT,                   LT1_SPC,                            SLS_LT2, DEL_LT1),//SPC_LT1 GUI_SLS
-		ESC_LT1, MO(2),   KC_LALT,                   KC_SPC,                             SLS_LT2, DEL_LT1),
+		ESC_LT1, MO(2),   KC_LALT,                   KC_SPC,                             SLS_LT2, LT2_DEL),
 
 	//1: Number & Extra Keys
 	[_FN1] = LAYOUT_625_space(
