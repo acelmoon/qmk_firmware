@@ -7,9 +7,9 @@
 #define VENDOR_ID       0xFEED
 #define PRODUCT_ID      0x6060
 #define DEVICE_VER      0x0001
-#define MANUFACTURER    qmkbuilder
-#define PRODUCT         keyboard
-#define DESCRIPTION     Keyboard
+#define MANUFACTURER    worldspawnkeebs
+#define PRODUCT         Jerkin30
+#define DESCRIPTION     An Alice 30%
 
 /* key matrix size */
 #define MATRIX_ROWS 3
@@ -26,7 +26,7 @@
 /* number of backlight levels */
 
 #ifdef BACKLIGHT_PIN
-#define BACKLIGHT_LEVELS 0
+#define BACKLIGHT_LEVELS 4
 #endif
 
 /* Set 0 if debouncing isn't needed */
