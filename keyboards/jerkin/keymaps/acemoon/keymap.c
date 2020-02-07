@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[2] = LAYOUT( //F-Keys & Functions
 		KC_F12, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, _______, 
 		AYAYA, KC_HOME, KC_END, KC_PGUP, KC_PGDN, KC_INS, KC_PAUS, KC_PSCR, _______, _______, _______, _______,
-		MO(4), KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, _______, KC_B, _______, KC_MUTE, _______, _______, KC_VOLD, KC_VOLU),
+		MO(4), KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, _______, KC_B, MO(5), KC_MUTE, _______, _______, KC_VOLD, KC_VOLU),
 
 	[3] = LAYOUT( //Home-Row Arrows & Extra Keys
 		_______, _______, _______, _______, _______, _______, _______, _______, KC_UP, KC_LBRC, KC_RBRC, KC_BSLS, KC_PSCR,
