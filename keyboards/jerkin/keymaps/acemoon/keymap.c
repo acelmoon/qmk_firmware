@@ -38,13 +38,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[1] = LAYOUT( //Number & Extra Keys
 		KC_EQL, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_MINS, _______, 
-<<<<<<< HEAD
-		_______, _______, _______, _______, _______, _______, _______, _______, _______, KC_SCLN, KC_SCLN, _______, 
-		_______, _______, _______, _______, KC_APP, _______, KC_BSPC, _______, _______, _______, _______, SFT_SLS, _______),//KC_PSCR
-=======
 		_______, _______, _______, _______, _______, _______, KC_NUBS, KC_NUHS, KC_GRV, KC_SCLN, KC_SCLN, KC_ENT, 
 		_______, _______, _______, _______, KC_APP, _______, KC_BSPC, _______, KC_LBRC, KC_RBRC, KC_BSLS, KC_RSFT, KC_DEL),//KC_PSCR
->>>>>>> 00327bc10c18d7952f8eacea687d9a84f28a3bb6
 
 	[2] = LAYOUT( //F-Keys & Functions
 		KC_F12, KC_F1, KC_F2, KC_F3, KC_F4, KC_F5, KC_F6, KC_F7, KC_F8, KC_F9, KC_F10, KC_F11, _______, 
@@ -53,11 +48,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[3] = LAYOUT( //Home-Row Arrows & Extra Keys
 		_______, _______, _______, _______, _______, _______, _______, _______, KC_UP, KC_LBRC, KC_RBRC, KC_BSLS, KC_PSCR,
-<<<<<<< HEAD
-		_______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_NO, KC_NO, 
-=======
 		_______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, KC_QUOT, KC_ENT, 
->>>>>>> 00327bc10c18d7952f8eacea687d9a84f28a3bb6
 		_______, _______, _______, _______, KC_LALT, _______, _______, SLS_LT2, _______, _______, _______, _______, _______),
 	
 	[4] = LAYOUT( //Settings
