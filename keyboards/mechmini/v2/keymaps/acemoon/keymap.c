@@ -70,7 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 		_______, _______, _______, _______, _______, _______, _______, F(0),    _______, _______, _______,
 		_______, _______, _______,                   _______,                           KC_PSCR, _______),
 		
-	//4: Lighting
+	//4: Lighting & Settings
 	[_FN4] = LAYOUT_625_space(
 		TG(5),   RGB_HUI, RGB_SAI, RGB_VAI, _______, _______, _______, _______, _______, _______, KC_SLEP, KC_PWR,
 		RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_M_P, _______, _______, _______, _______, _______, _______,
@@ -184,8 +184,8 @@ enum function_id {
 };
 
 const uint16_t PROGMEM fn_actions[] = {
-  [0]  = ACTION_FUNCTION(APO_M),
-  //[1]  = ACTION_FUNCTION(RGB_CYAN),
+  [0] = ACTION_FUNCTION(APO_M),
+  //[1] = ACTION_FUNCTION(RGB_CYAN),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
