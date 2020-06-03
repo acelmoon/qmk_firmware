@@ -117,10 +117,11 @@ void tabesc_reset (qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void quotlayer_start (qk_tap_dance_state_t *state, void *user_data) {
-	if(!IS_LAYER_ON(3)){layer_on(3);}
-	if(state->interrupted)
+	if(state->pressed)
 	{
-		register_code (KC_QUOT);
+		if(!IS_LAYER_ON(3)){
+			layer_on(3);
+		}
 	}
 }
 
@@ -134,9 +135,9 @@ void quotlayer_finished (qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void quotlayer_reset (qk_tap_dance_state_t *state, void *user_data) {
-  if(IS_LAYER_ON(3)){layer_off(3);}
-  if (state->count == 1) {unregister_code (KC_QUOT);}
-  else {unregister_code (KC_ENT);}
+  layer_off(3);
+  unregister_code (KC_QUOT);
+  unregister_code (KC_ENT);
 }
 
 void esclayer_start (qk_tap_dance_state_t *state, void *user_data) {
@@ -206,7 +207,9 @@ void slshlayer_reset (qk_tap_dance_state_t *state, void *user_data) {
 }
 
 void rshiftdot_start(qk_tap_dance_state_t *state, void *user_data) {
+  if (state->pressed){
 	register_code (KC_RSFT);
+  }
 }
 
 void rshiftdot_finished (qk_tap_dance_state_t *state, void *user_data) {
@@ -219,6 +222,7 @@ void rshiftdot_finished (qk_tap_dance_state_t *state, void *user_data) {
 		register_code (KC_DOT);
 		unregister_code (KC_DOT);
 		register_code (KC_DOT);
+		unregister_code (KC_DOT);
 	}
   }
 }

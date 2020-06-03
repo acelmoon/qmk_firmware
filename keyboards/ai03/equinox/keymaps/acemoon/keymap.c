@@ -22,7 +22,8 @@
 
 // Defines the keycodes used by our macros in process_record_user
 enum custom_keycodes {
-  UwU = SAFE_RANGE,
+  APO_M_3 = SAFE_RANGE,
+  UwU,
   AYAYA,
 };
 
@@ -39,9 +40,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //0: Base Layer
   [0] = LAYOUT_all(
 	KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,
-	KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    _______, LT3_QUO,
+	KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    _______, QUO_LT3,
 	KC_LSFT, _______, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, SFT_DOT, MO(1),
-    ESC_LT1, MO(2),   KC_LALT,          KC_SPC,           KC_SPC,       KC_SPC,      SLS_LT2, _______, LT2_DEL),
+    ESC_LT1, MO(2),   KC_LALT,          KC_SPC,           KC_SPC,       KC_SPC,      SLS_LT2, MO(7),   LT2_DEL),
 
   //1: Number & Extra Keys
   [1] = LAYOUT_all(
@@ -61,7 +62,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [3] = LAYOUT_all(
     _______, _______, _______, _______, _______, _______, _______, _______, KC_UP,   KC_LBRC, KC_RBRC, KC_BSLS,
 	_______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______, _______,
-	_______, _______, _______, _______, _______, _______, _______, _______, F(0),    _______, _______, _______,
+	_______, _______, _______, _______, _______, _______, _______, _______, APO_M_3, _______, _______, _______,
 	_______, _______, _______,          _______,          _______,     _______,      KC_PSCR, _______, _______),
 
   //4: Lighting & Settings
@@ -105,6 +106,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+	case APO_M_3:
+	  if (record->event.pressed) {
+		// when keycode is pressed
+		add_key(KC_QUOT); send_keyboard_report();
+		add_key(KC_M); send_keyboard_report();
+	  } else {
+		// when keycode is released
+		del_key(KC_QUOT); send_keyboard_report();
+		del_key(KC_M); send_keyboard_report();
+	  }
+	  break;	
     case UwU:
       if (record->event.pressed) {
         // when keycode is pressed
@@ -124,28 +136,3 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   }
   return true;
 };
-
-enum function_id {
-	APO_M,
-};
-
-const uint16_t PROGMEM fn_actions[] = {
-  [0] = ACTION_FUNCTION(APO_M),
-};
-
-void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
-  switch(id){
-	case APO_M:
-	  if(record->event.pressed){
-	    add_key(KC_QUOT);
-		send_keyboard_report();
-        add_key(KC_M);
-        send_keyboard_report();
-	  }else{
-		del_key(KC_QUOT);
-		send_keyboard_report();
-        del_key(KC_M);
-        send_keyboard_report();
-	  }
-  }
-}
