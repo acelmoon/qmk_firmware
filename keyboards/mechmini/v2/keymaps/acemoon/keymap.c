@@ -175,6 +175,7 @@ uint32_t layer_state_set_user(uint32_t state) {
   return state;
 }
 
+/*
 enum function_id {
 	//RGB_CYAN,
 };
@@ -184,11 +185,10 @@ const uint16_t PROGMEM fn_actions[] = {
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
-  /*
   switch(id){
 	case RGB_CYAN:
 	  rgblight_setrgb(0, 55, 40);
 	  break;
   }
-  */
 }
+*/
