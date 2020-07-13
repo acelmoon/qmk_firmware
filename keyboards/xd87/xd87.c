@@ -38,6 +38,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
   return process_record_user(keycode, record);
 }
 
+<<<<<<< HEAD
 void led_init_ports(void) {
     // * Set our LED pins as output
     DDRE |= (1<<2);
@@ -53,6 +54,16 @@ void led_set_kb(uint8_t usb_led) {
         PORTE |= (1 << 2);
     }
   led_set_user(usb_led);
+=======
+bool led_update_kb(led_t led_state) {
+    bool res = led_update_user(led_state);
+
+    if (res) {
+        writePin(E2, !led_state.caps_lock);
+    }
+
+    return res;
+>>>>>>> 1b960381153f69b7b0ed28db51248f674ce0fadb
 }
 
 void led_init_ports(void) {
