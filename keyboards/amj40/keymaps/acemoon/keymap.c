@@ -189,10 +189,12 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
 	case APO_M:
 	  if(record->event.pressed){
 	    add_key(KC_QUOT);
+		send_keyboard_report();
         add_key(KC_M);
         send_keyboard_report();
 	  }else{
 		del_key(KC_QUOT);
+		send_keyboard_report();
         del_key(KC_M);
         send_keyboard_report();
 	  }
