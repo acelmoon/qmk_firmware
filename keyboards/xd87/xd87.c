@@ -14,12 +14,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "xd87.h"
+#include "led.h"
 
 void matrix_init_kb(void) {
   // put your keyboard start-up code here
   // runs once when the firmware starts up
   led_init_ports();
   matrix_init_user();
+  led_init_ports();
 }
 
 void matrix_scan_kb(void) {
@@ -36,6 +38,23 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
   return process_record_user(keycode, record);
 }
 
+<<<<<<< HEAD
+void led_init_ports(void) {
+    // * Set our LED pins as output
+    DDRE |= (1<<2);
+}
+
+void led_set_kb(uint8_t usb_led) {
+    // put your keyboard LED indicator (ex: Caps Lock LED) toggling code here
+    if (usb_led & (1 << USB_LED_CAPS_LOCK)) {
+        //register_code(KC_C); //to test if this actually gets executed (it doesnt)
+        PORTE &= ~(1 << 2);
+    } else {
+        //register_code(KC_O); //to test if this actually gets executed (it doesnt)
+        PORTE |= (1 << 2);
+    }
+  led_set_user(usb_led);
+=======
 bool led_update_kb(led_t led_state) {
     bool res = led_update_user(led_state);
 
@@ -44,6 +63,7 @@ bool led_update_kb(led_t led_state) {
     }
 
     return res;
+>>>>>>> 1b960381153f69b7b0ed28db51248f674ce0fadb
 }
 
 void led_init_ports(void) {

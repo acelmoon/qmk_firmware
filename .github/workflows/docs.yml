@@ -28,11 +28,9 @@ jobs:
       run: |
         apt-get update && apt-get install -y rsync nodejs npm doxygen
         npm install -g moxygen
-
     - name: Build docs
       run: |
         qmk --verbose generate-docs
-
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@3.7.1
       with:
