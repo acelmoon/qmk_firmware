@@ -25,6 +25,7 @@ enum custom_keycodes {
   APO_M_3 = SAFE_RANGE,
   UwU,
   AYAYA,
+  OMEGALUL,
 };
 
 
@@ -50,7 +51,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [2] = LAYOUT_625_space(
 		KC_F12,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,
 		UwU    , KC_HOME, KC_END,  KC_PGUP, KC_PGDN, KC_INS,  KC_PAUS, KC_PSCR, _______, _______, _______,
-		AYAYA  , KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, BL_TOGG, _______, KC_MUTE, _______, _______, _______,
+		OMEGALUL  , KC_MPRV, KC_MPLY, KC_MNXT, KC_MSTP, BL_TOGG, _______, KC_MUTE, _______, _______, _______,
 		MO(4),   KC_NO,   KC_MUTE,                   MO(7),                              KC_VOLD, KC_VOLU),
 
 	//3: Home-Row Arrows & Extra Keys
@@ -126,6 +127,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       if (record->event.pressed) {
         // when keycode is pressed
         SEND_STRING("AYAYA");
+      } else {
+        // when keycode is released
+      }
+      break;
+	case OMEGALUL:
+      if (record->event.pressed) {
+        // when keycode is pressed
+        SEND_STRING("OMEGALUL");
       } else {
         // when keycode is released
       }
