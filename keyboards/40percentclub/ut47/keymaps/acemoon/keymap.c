@@ -71,11 +71,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	//0: Base Layer
 	[_FN0] = LAYOUT(
 	  //KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-		TAB_ESC, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,//KC_TAB
+		KC_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,    KC_BSPC,//KC_TAB
 		KC_LCTL, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    QUO_LT3, LT3_ENT,//LT3_QUO KC_ENT
 		KC_LSFT, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, SFT_DOT, RSF_SLS, MO(1),//RSF_DOT
 	  //ESC_LT1, MO(2),   KC_LALT, KC_NO,   KC_NO,   KC_SPC,  KC_NO,   KC_NO,   SLS_LT2, MO(7),   LT1_DEL),//LT1_ESC
-		ESC_LT1, MO(2),   TG(6),   KC_LALT, KC_SPC,  LT1_SPC, MO(7),   SLS_LT2, MO(2),   KC_NO,   LT1_DEL),
+		ESC_LT1, MO(2),   MO(2),   KC_LALT, KC_SPC,  LT1_SPC, MO(7),   SLS_LT2, MO(2),   KC_NO,   LT1_DEL),
 
 	//1: Number & Extra Keys
 	[_FN1] = LAYOUT(

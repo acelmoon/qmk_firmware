@@ -55,12 +55,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[_FN3] = LAYOUT_625_space(
 		_______, _______, _______, _______, _______, _______, _______, _______, KC_UP, KC_LBRC, KC_RBRC, KC_BSLS,
 		_______, _______, _______, _______, _______, _______, _______, KC_LEFT, KC_DOWN, KC_RGHT, _______,
-		_______, _______, _______, _______, _______, _______, _______, F(2),    _______, _______, _______,
+		_______, _______, _______, _______, _______, _______, _______, F(1),    _______, _______, _______,
 		_______, _______, _______,                   _______,                           KC_PSCR, _______),
 		
 	//4: Lighting
 	[_FN4] = LAYOUT_625_space(
-		TG(6),   RGB_HUI, RGB_SAI, RGB_VAI, F(1),    _______, _______, KC_WH_U, KC_MS_U, KC_WH_D, KC_SLEP, KC_PWR,
+		TG(6),   RGB_HUI, RGB_SAI, RGB_VAI, _______,    _______, _______, KC_WH_U, KC_MS_U, KC_WH_D, KC_SLEP, KC_PWR,//F(2)
 		RGB_MOD, RGB_HUD, RGB_SAD, RGB_VAD, RGB_M_P, _______, KC_BTN2, KC_MS_L, KC_MS_D, KC_MS_R, KC_BTN1,
 		_______, BL_DEC,  BL_TOGG, BL_INC,  RGB_TOG, _______, TOG_NKR, KC_WH_L, KC_WH_R, _______, _______,
 		KC_NO,   KC_NO,   TG(7),                     _______,                            _______, RESET),
@@ -134,14 +134,14 @@ uint32_t layer_state_set_user(uint32_t state) {
 
 enum function_id {
     SHIFT_ESC,
-	RGB_CYAN,
 	APO_M,
+	//RGB_CYAN,
 };
 
 const uint16_t PROGMEM fn_actions[] = {
   [0]  = ACTION_FUNCTION(SHIFT_ESC),
-  [1]  = ACTION_FUNCTION(RGB_CYAN),
-  [2]  = ACTION_FUNCTION(APO_M),
+  [1]  = ACTION_FUNCTION(APO_M),
+  //[2]  = ACTION_FUNCTION(RGB_CYAN),
 };
 
 void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
@@ -169,11 +169,6 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
       break;
   }
   switch(id){
-	case RGB_CYAN:
-	  rgblight_setrgb(0, 55, 40);
-	  break;
-  }
-  switch(id){
 	case APO_M:
 	  if(record->event.pressed){
 	    add_key(KC_QUOT);
@@ -187,4 +182,11 @@ void action_function(keyrecord_t *record, uint8_t id, uint8_t opt) {
         send_keyboard_report();
 	  }
   }
+  /*
+  switch(id){
+	case RGB_CYAN:
+	  rgblight_setrgb(0, 55, 40);
+	  break;
+  }
+  */
 }
